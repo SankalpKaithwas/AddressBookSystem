@@ -111,12 +111,12 @@ namespace Address_Book_System
                 }
                 else
                 {
-                    Console.WriteLine("Key doesnt exist");
+                    Console.WriteLine("First Name doesnt exist");
                 }
             }
             private void DeleteContacts()
             {
-                Console.WriteLine("Enter the key to Delete");
+                Console.WriteLine("Enter first name to Delete");
                 string input = Console.ReadLine();
                 if (contacts.ContainsKey(input.ToLower()))
                 {
@@ -124,7 +124,7 @@ namespace Address_Book_System
                 }
                 else
                 {
-                    Console.WriteLine("Key doesnt exist");
+                    Console.WriteLine("first name doesnt exist");
                 }
             }
 
@@ -152,7 +152,7 @@ namespace Address_Book_System
                                 program.GetContact();
                                 continue;
                             case 3:
-                                Console.WriteLine("Enter key");
+                                Console.WriteLine("Enter first name");
                                 string key = Console.ReadLine();
                                 program.EditContacts(key);
                                 break;
