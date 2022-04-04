@@ -26,6 +26,7 @@ namespace Address_Book_System
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
                             Console.WriteLine("Choose 5: Search Contact by city");
+                            Console.WriteLine("Choose 6: Search number of Contact by city");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -51,6 +52,11 @@ namespace Address_Book_System
                                         string city = Console.ReadLine();
                                         work.Search(city);
                                         break;
+                                    case 6:
+                                        Console.WriteLine("Enter city");
+                                        city = Console.ReadLine();
+                                        work.PersonCount(city);
+                                        break;
                                     case 0:
                                         Console.WriteLine("Good Day");
                                         break;
@@ -75,6 +81,7 @@ namespace Address_Book_System
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
                             Console.WriteLine("Choose 5: Search Contact by city");
+                            Console.WriteLine("Choose 6: Search number of Contact by city");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -99,6 +106,11 @@ namespace Address_Book_System
                                         Console.WriteLine("Enter city");
                                         string city = Console.ReadLine();
                                         familyContacts.Search(city);
+                                        break;
+                                    case 6:
+                                        Console.WriteLine("Enter city ");
+                                        city = Console.ReadLine();
+                                        familyContacts.PersonCount(city);
                                         break;
                                     case 0:
                                         Console.WriteLine("Good Day");
