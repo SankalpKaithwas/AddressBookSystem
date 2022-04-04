@@ -6,11 +6,11 @@ namespace Address_Book_System
 {
     public class WorkContacts
     {
-        private ArrayList contactList;
+        private List<AddressBook> contactList;
         private Dictionary<string, AddressBook> contacts;
         public WorkContacts()
         {
-            contactList = new ArrayList();
+            contactList = new List<AddressBook>();
             contacts = new Dictionary<string, AddressBook>();
         }
 
@@ -93,6 +93,26 @@ namespace Address_Book_System
                 Console.WriteLine("first name doesnt exist");
             }
         }
+
+        public void Search(string city)
+        {
+            var list = contactList.FindAll(x => x.city == city);
+            Console.WriteLine($"Details of people who live in {city} - ");
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            //foreach (AddressBook item in contacts.Values)
+            //{
+            //    Console.WriteLine($"Person that lives in {city} are :");
+            //    if (item.city == city)
+            //    {
+            //        Console.WriteLine(item.firstName);
+            //    }
+            //}
+        }
+
     }
 }
 

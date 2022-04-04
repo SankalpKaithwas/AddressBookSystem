@@ -7,13 +7,12 @@ namespace Address_Book_System
     {
         static void Main(string[] args)
         {
-            int input = 0;
+            int input;
             do
             {
                 Console.WriteLine("Choose 1: Work contacts");
                 Console.WriteLine("Choose 2: Family contacts");
                 Console.WriteLine("Choose 0: Exit");
-
                 input = int.Parse(Console.ReadLine());
                 switch (input)
                 {
@@ -26,6 +25,7 @@ namespace Address_Book_System
                             Console.WriteLine("Choose 2: To get Contacts");
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
+                            Console.WriteLine("Choose 5: Search Contact by city");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -34,7 +34,6 @@ namespace Address_Book_System
                                 {
                                     case 1:
                                         work.AddContact();
-
                                         continue;
                                     case 2:
                                         work.GetContact();
@@ -46,6 +45,11 @@ namespace Address_Book_System
                                         break;
                                     case 4:
                                         work.DeleteContacts();
+                                        break;
+                                    case 5:
+                                        Console.WriteLine("Enter city");
+                                        string city = Console.ReadLine();
+                                        work.Search(city);
                                         break;
                                     case 0:
                                         Console.WriteLine("Good Day");
@@ -70,6 +74,7 @@ namespace Address_Book_System
                             Console.WriteLine("Choose 2: To get Contacts");
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
+                            Console.WriteLine("Choose 5: Search Contact by city");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -90,6 +95,11 @@ namespace Address_Book_System
                                     case 4:
                                         familyContacts.DeleteContacts();
                                         break;
+                                    case 5:
+                                        Console.WriteLine("Enter city");
+                                        string city = Console.ReadLine();
+                                        familyContacts.Search(city);
+                                        break;
                                     case 0:
                                         Console.WriteLine("Good Day");
                                         break;
@@ -109,4 +119,3 @@ namespace Address_Book_System
         }
     }
 }
-
