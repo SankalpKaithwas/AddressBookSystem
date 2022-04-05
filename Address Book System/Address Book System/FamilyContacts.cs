@@ -93,35 +93,17 @@ namespace Address_Book_System
 
         public void Search(string city)
         {
-            var list = contactList.FindAll(x => x.city == city);
+            var list = contactList.FindAll(x => x.city == city || x.state == city);
             Console.WriteLine($"Details of people who live in {city} - ");
             foreach (var contact in list)
             {
                 Console.WriteLine(contact);
             }
-            //foreach (AddressBook item in contacts.Values)
-            //{
-            //    Console.WriteLine($"Person that lives in {city} are :");
-            //    if (item.city == city)
-            //    {
-            //        Console.WriteLine(item.firstName);
-            //    }
-            //}
         }
         public void PersonCount(string city)
         {
-
-            var list = contactList.FindAll(x => x.city == city);
+            var list = contactList.FindAll(x => x.city == city || x.state == city);
             Console.WriteLine($"Number of person that live in {city} are : " + list.Count);
-            //  int count = 0;
-            //foreach (AddressBook item in contacts.Values)
-            //{
-            //    if (item.city == city)
-            //    {
-            //        count++;
-            //    }
-            //}
-            //Console.WriteLine($"Number of person tha live in{city} are : {count}");
         }
     }
 }

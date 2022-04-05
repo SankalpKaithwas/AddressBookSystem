@@ -32,7 +32,7 @@ namespace Address_Book_System
             string phoneNumber = Console.ReadLine();
             Console.WriteLine("Enter your Email: ");
             string email = Console.ReadLine();
-            AddressBook addresses = new AddressBook(firstName.ToLower(), lastName, address, city, state, zipCode, phoneNumber, email);
+            AddressBook addresses = new AddressBook(firstName.ToLower(), lastName, address, city.ToLower(), state.ToLower(), zipCode, phoneNumber, email);
             contactList.Add(addresses);
             try
             {
@@ -96,38 +96,18 @@ namespace Address_Book_System
 
         public void Search(string city)
         {
-            var list = contactList.FindAll(x => x.city == city);
+            var list = contactList.FindAll(x => x.city == city.ToLower() || x.state == city.ToLower());
             Console.WriteLine($"Details of people who live in {city} - ");
-
             foreach (var item in list)
             {
                 Console.WriteLine(item);
             }
-            //foreach (AddressBook item in contacts.Values)
-            //{
-            //    Console.WriteLine($"Person that lives in {city} are :");
-            //    if (item.city == city)
-            //    {
-            //        Console.WriteLine(item.firstName);
-            //    }
-            //}
         }
         public void PersonCount(string city)
         {
-
-            var list = contactList.FindAll(x => x.city == city);
-            Console.WriteLine($"Number of person that live in {city} are : " + list.Count);
-            //  int count = 0;
-            //foreach (AddressBook item in contacts.Values)
-            //{
-            //    if (item.city == city)
-            //    {
-            //        count++;
-            //    }
-            //}
-            //Console.WriteLine($"Number of person tha live in{city} are : {count}");
+            var list = contactList.FindAll(x => x.city == city.ToLower() || x.state == city.ToLower());
+            Console.WriteLine($"Number of person who live in {city} are : " + list.Count);
         }
-
     }
 }
 

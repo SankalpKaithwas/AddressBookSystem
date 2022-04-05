@@ -7,6 +7,9 @@ namespace Address_Book_System
     {
         static void Main(string[] args)
         {
+            var work = new WorkContacts();
+            var familyContacts = new FamilyContacts();
+
             int input;
             do
             {
@@ -17,7 +20,6 @@ namespace Address_Book_System
                 switch (input)
                 {
                     case 1:
-                        var work = new WorkContacts();
                         int option = 0;
                         do
                         {
@@ -25,8 +27,8 @@ namespace Address_Book_System
                             Console.WriteLine("Choose 2: To get Contacts");
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
-                            Console.WriteLine("Choose 5: Search Contact by city");
-                            Console.WriteLine("Choose 6: Search number of Contact by city");
+                            Console.WriteLine("Choose 5: Search Contact by city or state");
+                            Console.WriteLine("Choose 6: Search number of Contact by city or state");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -48,12 +50,12 @@ namespace Address_Book_System
                                         work.DeleteContacts();
                                         break;
                                     case 5:
-                                        Console.WriteLine("Enter city");
+                                        Console.WriteLine("Enter city or state");
                                         string city = Console.ReadLine();
                                         work.Search(city);
                                         break;
                                     case 6:
-                                        Console.WriteLine("Enter city");
+                                        Console.WriteLine("Enter city or state");
                                         city = Console.ReadLine();
                                         work.PersonCount(city);
                                         break;
@@ -72,7 +74,6 @@ namespace Address_Book_System
                         } while (option != 0);
                         break;
                     case 2:
-                        var familyContacts = new FamilyContacts();
                         int options = 0;
                         do
                         {
@@ -80,8 +81,8 @@ namespace Address_Book_System
                             Console.WriteLine("Choose 2: To get Contacts");
                             Console.WriteLine("Choose 3: To Edit a contact");
                             Console.WriteLine("Choose 4: To Delete a Contact");
-                            Console.WriteLine("Choose 5: Search Contact by city");
-                            Console.WriteLine("Choose 6: Search number of Contact by city");
+                            Console.WriteLine("Choose 5: Search Contact by city or state");
+                            Console.WriteLine("Choose 6: Search number of Contact by city or state");
                             Console.WriteLine("Choose 0: To Exit");
                             try
                             {
@@ -103,12 +104,12 @@ namespace Address_Book_System
                                         familyContacts.DeleteContacts();
                                         break;
                                     case 5:
-                                        Console.WriteLine("Enter city");
+                                        Console.WriteLine("Enter city or state");
                                         string city = Console.ReadLine();
                                         familyContacts.Search(city);
                                         break;
                                     case 6:
-                                        Console.WriteLine("Enter city ");
+                                        Console.WriteLine("Enter city or state");
                                         city = Console.ReadLine();
                                         familyContacts.PersonCount(city);
                                         break;
