@@ -1,17 +1,21 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 
 namespace Address_Book_System
 {
     public class WorkContacts
     {
-        private List<AddressBook> contactList;
-        private Dictionary<string, AddressBook> contacts;
+        private List<Person> contactList;
+        private Dictionary<string, Person> contacts;
         public WorkContacts()
         {
-            contactList = new List<AddressBook>();
-            contacts = new Dictionary<string, AddressBook>();
+            contactList = new List<Person>();
+            contacts = new Dictionary<string, Person>();
         }
 
         public void AddContact()
@@ -32,7 +36,7 @@ namespace Address_Book_System
             string phoneNumber = Console.ReadLine();
             Console.WriteLine("Enter your Email: ");
             string email = Console.ReadLine();
-            AddressBook addresses = new AddressBook(firstName.ToLower(), lastName, address, city.ToLower(), state.ToLower(), zipCode, phoneNumber, email);
+            Person addresses = new Person(firstName.ToLower(), lastName, address, city.ToLower(), state.ToLower(), zipCode, phoneNumber, email);
             contactList.Add(addresses);
             try
             {
@@ -45,14 +49,14 @@ namespace Address_Book_System
         }
         public void GetContact()
         {
-            foreach (KeyValuePair<string, AddressBook> item in contacts)
-            {
+            foreach (KeyValuePair<string, Person> item in contacts)
                 Console.WriteLine(item.Value);
-            }
         }
 
-        public void EditContacts(string key)
+        public void EditContacts()
         {
+            Console.WriteLine("Enter first name");
+            string key = Console.ReadLine();
             if (contacts.ContainsKey(key))
             {
                 Console.WriteLine("Enter your First Name: ");
@@ -71,42 +75,57 @@ namespace Address_Book_System
                 string phoneNumber = Console.ReadLine();
                 Console.WriteLine("Enter your Email: ");
                 string email = Console.ReadLine();
-                AddressBook addresses = new AddressBook(firstName.ToLower(), lastName, address, city, state, zipCode, phoneNumber, email);
+                Person addresses = new Person(firstName.ToLower(), lastName, address, city.ToLower(), state.ToLower(), zipCode, phoneNumber, email);
                 contactList.Add(addresses);
                 contacts[key] = addresses;
             }
             else
-            {
                 Console.WriteLine("First Name doesnt exist");
-            }
         }
         public void DeleteContacts()
         {
-            Console.WriteLine("Enter first name to Delete");
+            Console.Write("Enter first name to Delete: ");
             string input = Console.ReadLine();
             if (contacts.ContainsKey(input.ToLower()))
-            {
                 contacts.Remove(input.ToLower());
-            }
             else
-            {
                 Console.WriteLine("first name doesnt exist");
-            }
         }
-
-        public void Search(string city)
+        /// <summary>
+        /// Search contact by city or state
+        /// </summary>
+        /// <param name="city"></param>
+        public void SearchContact()
         {
-            var list = contactList.FindAll(x => x.city == city.ToLower() || x.state == city.ToLower());
+            Console.Write("Enter city or state: ");
+            string city = Console.ReadLine();
             Console.WriteLine($"Details of people who live in {city} - ");
-            foreach (var item in list)
+            foreach (var item in contacts)
             {
-                Console.WriteLine(item);
+                if (item.Value.city == city || item.Value.state == city)
+                    Console.WriteLine(item.Value);
             }
         }
-        public void PersonCount(string city)
+        /// <summary>
+        /// Get count of person by city or state
+        /// </summary>
+        /// <param name="city"></param>
+        public void PersonCount()
         {
-            var list = contactList.FindAll(x => x.city == city.ToLower() || x.state == city.ToLower());
-            Console.WriteLine($"Number of person who live in {city} are : " + list.Count);
+            Console.WriteLine("Enter city or state");
+            string city = Console.ReadLine();
+            int count = 0;
+            foreach (var item in contacts)
+            {
+                if (item.Value.city == city || item.Value.state == city)
+                    count++;
+            }
+            Console.WriteLine($"Number of People who lives in {city} is {count}");
+        }
+        public void SortContactsByName()
+        {
+            foreach (KeyValuePair<string, Person> item in contacts.OrderBy(x => x.Key))
+                Console.WriteLine(item.Value);
         }
     }
 }

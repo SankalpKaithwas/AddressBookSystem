@@ -1,6 +1,6 @@
 ﻿namespace Address_Book_System
 {
-    public class AddressBook
+    public class Person
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -9,10 +9,9 @@
         public string zipCode { get; set; }
         public string phoneNumber { get; set; }
         public string email { get; set; }
-
         public string city { get; set; }
 
-        public AddressBook(string firstName, string lastName, string address, string city,
+        public Person(string firstName, string lastName, string address, string city,
             string state, string zipCode, string phoneNumber, string email)
         {
             this.firstName = firstName;
@@ -27,11 +26,12 @@
 
         public override string ToString()
         {
-            return "Details are: " + "\nFirstName - " + firstName +
-                "\nLastName " + lastName +
+            return "Details are - " + "\nFirstName: " + firstName +
+                "\nLastName: " + lastName +
                 "\nAddress: " + address +
-                "\nCity: " + city + ", state: " + state + "" +
-                "\nZip " + zipCode + " \nPhone: " + phoneNumber + " \nEmail: " + email;
+                "\nCity: " + city + ", state: " + state +
+                "\nZip: " + zipCode + " \nPhone: " + phoneNumber +
+                "\nEmail: " + email;
         }
     }
 }
