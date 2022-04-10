@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -203,7 +204,6 @@ namespace Address_Book_System
         public void CreateCsvFile()
         {
             string exportFilePath = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\CsvFile\WorkAddressBook.csv";
-            //Writing
             using (StreamWriter writer = new StreamWriter(exportFilePath))
             using (CsvWriter csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
@@ -243,6 +243,43 @@ namespace Address_Book_System
                     ReadCsvFile();
                     break;
                 default:
+                    break;
+            }
+        }
+
+        public void JSONFileSerialization()
+        {
+            string path = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\JSONFile\WorkContacts.json";
+            string serializedData = JsonConvert.SerializeObject(contacts);
+            using (StreamWriter writer = File.CreateText(path))
+            {
+                writer.Flush();
+                writer.WriteLine(serializedData);
+                Console.WriteLine(serializedData);
+            }
+        }
+        public void JSONFileDeserialize()
+        {
+            string path = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\JSONFile\WorkContacts.json";
+            string deserialisedData = File.ReadAllText(path);
+            var deserialised = JsonConvert.DeserializeObject<Dictionary<string, Person>>(deserialisedData);
+            foreach (var item in deserialised)
+            {
+                Console.WriteLine(item.Key + " " + item.Value);
+            }
+        }
+        public void JsonFile()
+        {
+            Console.WriteLine("1: Serialize");
+            Console.WriteLine("2: Deserealise");
+            int input = int.Parse(Console.ReadLine());
+            switch (input)
+            {
+                case 1:
+                    JSONFileSerialization();
+                    break;
+                case 2:
+                    JSONFileDeserialize();
                     break;
             }
         }
