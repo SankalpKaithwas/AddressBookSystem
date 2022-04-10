@@ -158,7 +158,47 @@ namespace Address_Book_System
 
                 Console.WriteLine("Please choose appropriate options from above");
             }
+        }
 
+        public void AddContactsToFile()
+        {
+            string write = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\TextFile\FamilyContacts.txt";
+            using (StreamWriter writer = File.AppendText(write))
+            {
+                foreach (var item in contacts)
+                    writer.WriteLine(item.ToString());
+                writer.Close();
+            }
+        }
+
+
+        public void ReadContactsFromFile()
+        {
+            string read = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\TextFile\FamilyContacts.txt";
+            string file = File.ReadAllText(read);
+            Console.WriteLine(file.ToString());
+        }
+
+        public void ReadOrWrite()
+        {
+            Console.WriteLine("1: Add to file");
+            Console.WriteLine("2: To Read from file");
+            Console.WriteLine("3: To Delete file");
+            int input = int.Parse(Console.ReadLine());
+            switch (input)
+            {
+                case 1:
+                    AddContactsToFile();
+                    break;
+                case 2:
+                    ReadContactsFromFile();
+                    break;
+                case 3:
+                    File.Delete(@"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\TextFile\FamilyContacts.txt");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

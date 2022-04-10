@@ -33,6 +33,7 @@ namespace Address_Book_System
                                 Console.WriteLine("Choose 6: To Search number of Contact by city or state");
                                 Console.WriteLine("Choose 7: To get Sorted List of Contacts");
                                 Console.WriteLine("Choose 8: To Get Sorted Contacts by city, state or zip");
+                                Console.WriteLine("Choose 9: To Add Contacts to file");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -64,6 +65,9 @@ namespace Address_Book_System
                                         case 8:
                                             workContacts.SortedContactsByCityStateZip();
                                             break;
+                                        case 9:
+                                            workContacts.ReadOrWrite();
+                                            break;
                                         default:
                                             Console.WriteLine("Choose valid Option");
                                             break;
@@ -86,6 +90,7 @@ namespace Address_Book_System
                                 Console.WriteLine("Choose 6: To Search number of Contact by city or state");
                                 Console.WriteLine("Choose 7: To Get Sorted List of Contacts");
                                 Console.WriteLine("Choose 8: To Get Sorted Contacts by city, state or zip");
+                                Console.WriteLine("Choose 9: To Add Contacts to file");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -115,6 +120,9 @@ namespace Address_Book_System
                                             break;
                                         case 8:
                                             familyContacts.SortedContactsByCityStateZip();
+                                            break;
+                                        case 9:
+                                            familyContacts.ReadOrWrite();
                                             break;
                                         default:
                                             Console.WriteLine("Choose valid Option");

@@ -1,0 +1,16 @@
+[sankalp, Details are - 
+FirstName: sankalp
+LastName: kaithwas
+Address: India
+City: CWa, state: mp
+Zip: 345 
+Phone: 56756
+Email: .com]
+[suraj, Details are - 
+FirstName: suraj
+LastName: kaithwas
+Address: 
+City: , state: 
+Zip:  
+Phone: 9357
+Email: af]
