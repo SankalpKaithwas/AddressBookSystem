@@ -34,6 +34,7 @@ namespace Address_Book_System
                                 Console.WriteLine("Choose 7: To get Sorted List of Contacts");
                                 Console.WriteLine("Choose 8: To Get Sorted Contacts by city, state or zip");
                                 Console.WriteLine("Choose 9: To Add Contacts to file");
+                                Console.WriteLine("Choose 10: To Add and get Contacts from a CSV File");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -68,6 +69,9 @@ namespace Address_Book_System
                                         case 9:
                                             workContacts.ReadOrWrite();
                                             break;
+                                        case 10:
+                                            workContacts.ReadWriteCSVFile();
+                                            break;
                                         default:
                                             Console.WriteLine("Choose valid Option");
                                             break;
@@ -91,6 +95,7 @@ namespace Address_Book_System
                                 Console.WriteLine("Choose 7: To Get Sorted List of Contacts");
                                 Console.WriteLine("Choose 8: To Get Sorted Contacts by city, state or zip");
                                 Console.WriteLine("Choose 9: To Add Contacts to file");
+                                Console.WriteLine("Choose 10: To Add and get Contacts from a CSV File");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -123,6 +128,9 @@ namespace Address_Book_System
                                             break;
                                         case 9:
                                             familyContacts.ReadOrWrite();
+                                            break;
+                                        case 10:
+                                            familyContacts.ReadWriteCSVFile();
                                             break;
                                         default:
                                             Console.WriteLine("Choose valid Option");

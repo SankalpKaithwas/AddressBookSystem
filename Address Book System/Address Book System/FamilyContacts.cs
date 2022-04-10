@@ -200,5 +200,54 @@ namespace Address_Book_System
                     break;
             }
         }
+
+        /// <summary>
+        /// Create CSv File
+        /// </summary>
+        public void CreateCsvFile()
+        {
+            string exportFilePath = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\CsvFile\FamilyAddressBook.csv";
+            //Writing
+            using (StreamWriter writer = new StreamWriter(exportFilePath))
+            using (CsvWriter csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                List<Person> sortedList = contactList.OrderBy(x => x.firstName).ToList();
+                csvExport.WriteRecords(sortedList);
+            }
+            Console.WriteLine($"Created a CSV file at {exportFilePath}");
+        }
+        /// <summary>
+        /// Read a CSV File
+        /// </summary>
+        public void ReadCsvFile()
+        {
+            string importFilePath = @"F:\FRP .net Git\AddressBookSystem\Address Book System\Address Book System\CsvFile\FamilyAddressBook.csv";
+
+            using (TextReader reader = new StreamReader(importFilePath))
+            using (CsvReader csvFile = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                List<Person> records = csvFile.GetRecords<Person>().ToList();
+                Console.WriteLine("List of names are -");
+                foreach (var item in records)
+                    Console.WriteLine(item.firstName);
+            }
+        }
+        public void ReadWriteCSVFile()
+        {
+            Console.WriteLine("1: Create a CSV File");
+            Console.WriteLine("2: Read a CSV File");
+            int choice = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    CreateCsvFile();
+                    break;
+                case 2:
+                    ReadCsvFile();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
