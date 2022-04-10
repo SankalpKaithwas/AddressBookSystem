@@ -127,5 +127,38 @@ namespace Address_Book_System
             foreach (KeyValuePair<string, Person> item in contacts.OrderBy(x => x.Key))
                 Console.WriteLine(item.Value);
         }
+
+
+        public void SortedContactsByCityStateZip()
+        {
+            Console.WriteLine("Choose 1: To Search contacts by City");
+            Console.WriteLine("Choose 2: To Search contacts by State");
+            Console.WriteLine("Choose 3: To Search contacts by Zip");
+            try
+            {
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        foreach (KeyValuePair<string, Person> item in contacts.OrderBy(x => x.Value.city))
+                            Console.WriteLine(item.Value);
+                        break;
+                    case 2:
+                        foreach (KeyValuePair<string, Person> item in contacts.OrderBy(x => x.Value.state))
+                            Console.WriteLine(item.Value);
+                        break;
+                    case 3:
+                        foreach (KeyValuePair<string, Person> item in contacts.OrderBy(x => x.Value.zipCode))
+                            Console.WriteLine(item.Value);
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Please choose appropriate options from above");
+            }
+
+        }
     }
 }

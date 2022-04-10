@@ -23,7 +23,6 @@ namespace Address_Book_System
                     switch (input)
                     {
                         case 1:
-
                             do
                             {
                                 Console.WriteLine("Choose 1: To Add a Contact");
@@ -33,6 +32,7 @@ namespace Address_Book_System
                                 Console.WriteLine("Choose 5: To Search Contact by city or state");
                                 Console.WriteLine("Choose 6: To Search number of Contact by city or state");
                                 Console.WriteLine("Choose 7: To get Sorted List of Contacts");
+                                Console.WriteLine("Choose 8: To Get Sorted Contacts by city, state or zip");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -61,8 +61,8 @@ namespace Address_Book_System
                                         case 7:
                                             workContacts.SortContactsByName();
                                             break;
-                                        case 0:
-                                            Console.WriteLine("Good Day");
+                                        case 8:
+                                            workContacts.SortedContactsByCityStateZip();
                                             break;
                                         default:
                                             Console.WriteLine("Choose valid Option");
@@ -85,6 +85,7 @@ namespace Address_Book_System
                                 Console.WriteLine("Choose 5: To Search Contact by city or state");
                                 Console.WriteLine("Choose 6: To Search number of Contact by city or state");
                                 Console.WriteLine("Choose 7: To Get Sorted List of Contacts");
+                                Console.WriteLine("Choose 8: To Get Sorted Contacts by city, state or zip");
                                 Console.WriteLine("Choose 0: To Exit");
                                 try
                                 {
@@ -112,8 +113,8 @@ namespace Address_Book_System
                                         case 7:
                                             familyContacts.SortedContactsByName();
                                             break;
-                                        case 0:
-                                            Console.WriteLine("Good Day");
+                                        case 8:
+                                            familyContacts.SortedContactsByCityStateZip();
                                             break;
                                         default:
                                             Console.WriteLine("Choose valid Option");
